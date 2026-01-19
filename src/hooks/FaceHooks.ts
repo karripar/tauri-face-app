@@ -26,6 +26,8 @@ const useFaceDetection = () => {
           return;
         }
 
+        console.log('result', result);
+
         setDetection(result.detection); // Update detection state
       } catch (error) {
         console.error(error);

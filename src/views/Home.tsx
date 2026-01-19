@@ -1,7 +1,11 @@
 import { Button } from '@/components/ui/button';
+import { useStore } from '@/stores/DBStore';
 import { NavLink } from 'react-router';
 
 const Home = () => {
+  const { faces, votes } = useStore();
+
+  console.log('kanta', faces, votes);
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 p-6">
       <div className="max-w-3xl mx-auto space-y-6">
