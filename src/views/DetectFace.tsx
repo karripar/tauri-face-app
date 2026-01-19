@@ -8,15 +8,15 @@ const DetectFace = () => {
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | null = null;
-    // Initialize the video feed and start detection
-
     const detectFace = async () => {
-      if (videoRef.current) {
-        getDescriptors(videoRef as React.RefObject<HTMLVideoElement>); // Start detecting faces
-        timer = setTimeout(detectFace, 100); // Repeat every 100ms
-      }
+      try {
+        await getDescriptors(videoRef as React.RefObject<HTMLVideoElement>); // Start detecting faces
+
+        timer = setTimeout(detectFace, 100); // Schedule the next detection
+      } catch (error) {}
     };
 
+    // Initialize the video feed and start detection
     const startDetection = async () => {
       try {
         if (videoRef.current) {
